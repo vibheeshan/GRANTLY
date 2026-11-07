@@ -13,7 +13,7 @@ export default defineConfig(() => {
     },
     server: {
       host: true,
-      allowedHosts: true,
+      allowedHosts: ['grantly-lfa6.onrender.com', '.onrender.com'],
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
@@ -23,7 +23,7 @@ export default defineConfig(() => {
     preview: {
       host: true,
       port: Number(process.env.PORT) || 4173,
-      allowedHosts: true,
+      allowedHosts: ['grantly-lfa6.onrender.com', '.onrender.com'],
     },
   };
 });
