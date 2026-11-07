@@ -1,0 +1,6 @@
+{
+  "name": "GRANTLY - Discover Opportunities. Track Applications. Fund Your Future.",
+  "description": "Premium unified scholarship discovery, Match DNA assessment, application tracking, and student financial intelligence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

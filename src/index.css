@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+    /* Light Theme Tokens - GRANTLY 3.0 */
+    --bg-canvas: #F6F7FB;
+    --bg-panel: #FFFFFF;
+    --border-panel: #E8EAF2;
+    --text-primary: #182033;
+    --text-muted: #758096;
+    --accent-violet: #6957E8;
+    --accent-teal: #14B8A6;
+  }
+
+  .dark,
+  html.dark {
+    /* Dark Theme Tokens - GRANTLY 3.0 */
+    --bg-canvas: #0A1020;
+    --bg-panel: #131D32;
+    --bg-sidebar: #0F172A;
+    --border-panel: rgba(255, 255, 255, 0.08);
+    --text-primary: #F8FAFC;
+    --text-muted: #A0AEC0;
+    --accent-violet: #A78BFA;
+    --accent-teal: #2DD4BF;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body,
+  html.dark body {
+    background-color: #0A1020;
+    color: #F8FAFC;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  body {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  /* Monospace figures */
+  .font-mono,
+  .tabular-nums {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reduced-motion *,
+.reduced-motion ::before,
+.reduced-motion ::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Feature 16 & 17: Print Stylesheet for PDF & Print-ready Summaries */
+@media print {
+  header, footer, aside, nav, button, .no-print, [role="dialog"], .fixed {
+    display: none !important;
+  }
+  body, main {
+    background: white !important;
+    color: #0F172A !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  .glass-panel, div[class*="Card"], .p-6, .p-5 {
+    border: 1px solid #CBD5E1 !important;
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  .print-page-break {
+    page-break-before: always;
+  }
+  a {
+    text-decoration: none !important;
+    color: #0F172A !important;
+  }
+}
+
+
+

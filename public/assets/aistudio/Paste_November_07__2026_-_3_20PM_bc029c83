@@ -1,0 +1,609 @@
+1. High-Tech UI Direction: “Command Center Glass”
+
+Concept: A precision mission-control interface for a student’s funding journey. Dark, layered glass panels, data-dense but readable, with HUD-style details and restrained glowing accents.
+
+Token	Dark (default)	Light
+Canvas	
+#070A12	
+#F5F7FB
+Panel (glass)	rgba(21,31,51,0.6) + 1px inner border rgba(255,255,255,0.06)	
+#FFFFFF + border 
+#E6E9F2
+Primary text	
+#F1F5F9	
+#172033
+Muted text	
+#94A3B8	
+#64748B
+Primary accent	Violet 
+#8B5CF6 / 
+#A78BFA	Violet 
+#6C5CE7
+Secondary accent	Teal 
+#2DD4BF	Teal 
+#14B8A6
+Status	Success 
+#22C55E, Warning 
+#F59E0B, Danger 
+#EF4444	Same
+
+Visual language
+
+Typography: Inter for UI, JetBrains Mono (or IBM Plex Mono) for all numbers, dates, and scores. Mono numerals give the dashboard its technical feel.
+Surfaces: Bento-grid dashboard, 14–18px radii, glass cards with backdrop-filter: blur(12px), a faint dot-grid or noise texture on the canvas.
+Signature details: Corner-bracket HUD marks on the hero score card, live “system status” dots (e.g., “Local data synced”), thin gradient rules, and conic-gradient match rings.
+Motion: Framer Motion only. Count-up numbers, staggered card entrance (40ms steps), spring-based ring fills, 150–200ms hover transitions. Respect prefers-reduced-motion.
+Restraint rules: One glow per screen, max. No neon text. No decorative gradients behind body copy. Contrast must meet WCAG AA.
+
+Key screen layouts
+
+DASHBOARD (desktop)
+┌────────┬──────────────────────────────────────────────┐
+│ SIDEBAR│ Breadcrumb ▸ Overview        [⌘K] 🔔 🌗 (A)  │
+│ dark   ├──────────────────────────────────────────────┤
+│ nav    │ Hero: "Good evening, Aarav"  ◉ Profile 72%   │
+│        │ [Eligible 24] [Saved 6] [Active 3] [Due 2]   │
+│        ├────────────────────────┬─────────────────────┤
+│        │ For You (ranked)       │ Deadline radar      │
+│        │ cards with match rings │ mono countdowns     │
+│        ├────────────────────────┼─────────────────────┤
+│        │ Application funnel     │ Readiness + actions │
+└────────┴────────────────────────┴─────────────────────┘
+
+MATCH DNA
+  [ 92 ]  ring with HUD corners     Bars: Education / Academic /
+          "Illustrative estimate"   Income / Location / Documents
+  ✓ Matched criteria    ✗ Unmet    ? Missing info
+  → Next best action: "Upload income certificate (+6 pts)"
+2. Master Build Prompt (Paste Into Your AI Coding Platform)
+PROJECT: GRANTLY 3.0 – High-Tech Scholarship Command Center
+Act as a principal frontend engineer, product designer and hackathon judge.
+
+IMPORTANT
+- Inspect the existing project first. Preserve routes, components, data
+  structures and LocalStorage keys. Do not recreate the app.
+- Stack: React + Vite, JavaScript, Tailwind CSS, React Router, Lucide React,
+  Framer Motion, Recharts, LocalStorage. No backend, no live AI API.
+
+DESIGN SYSTEM ("Command Center Glass")
+- Dark default theme with a light theme toggle. Use design tokens in
+  tailwind.config (canvas, panel, border, text, muted, accent-violet,
+  accent-teal, success, warning, danger).
+- Glass panels: translucent background, backdrop blur, 1px inner border,
+  radius 14–18px.
+- Numbers, dates, and scores use a monospace font with tabular figures.
+- One glow accent per screen maximum. No neon text. WCAG AA contrast.
+- Background: subtle dot-grid texture. Keep it faint.
+- Respect prefers-reduced-motion and provide a manual motion toggle.
+
+LAYOUT
+- Collapsible sidebar on desktop, drawer on mobile, bottom nav on small screens.
+- Top bar: breadcrumbs, global search, ⌘K hint, notifications with unread
+  badge, theme toggle, profile dropdown.
+- Command palette (Ctrl/⌘+K): fuzzy search across pages, scholarships,
+  and actions. Full keyboard navigation (↑ ↓ Enter Esc).
+
+REQUIRED OUTPUT
+- Bento-grid dashboard with count-up stats and a Match DNA preview.
+- Match DNA page: radial score ring, animated category bars, matched /
+  unmet / missing lists, "next best action", and a visible disclaimer that
+  the score is an estimate from demo criteria and not an official decision.
+- Kanban application board with drag-and-drop between Saved, Preparing,
+  Submitted, Under Review, Awarded, Rejected. Keyboard-accessible alternative.
+- Scholarship explorer with grid/list toggle, facets showing result counts,
+  filter chips, URL-synced filters, and a designed empty state.
+- Comparison studio (up to 3 scholarships) with differences highlighted.
+- Calendar with month/agenda views and priority color coding.
+- Document center with status states: Available, Missing, Expiring Soon,
+  Needs Attention.
+- Assistant: local intent matching over demo data only. Label it clearly as
+  "Local demo assistant – not a connected AI service."
+- Insights page: Recharts with responsive charts and tooltips.
+
+DATA AND ETHICS
+- All scholarships are fictional demo records and are labelled as such.
+- No invented official URLs. Never describe local data as live.
+- Never present a score as eligibility or a funding amount as guaranteed.
+- Do not store identity document files. Only store status and expiry dates.
+
+QUALITY GATE
+- npm run build passes with zero errors.
+- No console errors. All routes work. All buttons do something real.
+- Check layouts at 375px, 768px, 1280px, and 1440px. No horizontal overflow.
+- Verify LocalStorage persistence by reloading.
+
+Work in phases. After each phase, run the app, verify it, and summarize
+what changed and what remains. Implement real code, not plans.
+3. 100 Extra Features (Grouped in 10 Modules)
+Module A: Discovery & Search (1–10)
+Command palette (⌘K) with fuzzy search across pages and scholarships
+Typo-tolerant search
+Saved searches with one-click reapply
+Faceted filters that show result counts per option
+Removable filter chips
+URL-synced filters so results can be shared or bookmarked
+Recently viewed scholarships rail
+“Popular with students” demo ranking based on local interactions
+“Similar scholarships” suggestions on each detail page
+Search autocomplete with keyboard navigation
+Module B: Match DNA & Eligibility (11–20)
+Radar chart of compatibility dimensions
+Per-criterion explanation cards
+What-if simulator: change GPA or income and watch the score update live
+Missing-information prompts ranked by how much they affect the score
+Clear ineligible banner when a mandatory rule fails, regardless of score
+Score history across profile edits
+Profile confidence indicator showing how complete the data is
+Plain-language mode that rewrites rule explanations simply
+Transparent rules viewer showing every weight used in the calculation
+Printable match report
+Module C: Recommendations & Funding Intelligence (21–30)
+“For You” feed ranked by fit plus deadline urgency
+Provider diversity rule so recommendations don’t cluster on one provider
+Weekly digest card on the dashboard
+Category opportunity heatmap
+Funding potential calculator
+Mutually exclusive award handling, so amounts aren’t double-counted
+Scenario comparison for funding outcomes
+Match-quality sparkline trend
+Thumbs up/down feedback that tunes local ranking
+Dismiss with undo
+Module D: Application Tracker & Journey (31–40)
+Kanban drag-and-drop board
+Status history timeline per application
+Milestone checklist per application
+Completion percentage per application
+Next-action engine
+Private notes per application
+Clone an application to reuse its setup
+Multi-select bulk actions
+Archive view
+Application outcome funnel chart
+Module E: Calendar & Deadlines (41–50)
+Month, week, and agenda views
+Countdown badges (e.g., “T-3 days”)
+Priority levels: Critical, Attention, On Track, Completed
+Overdue detection with clear visual state
+Reminder schedule (T-30, T-7, T-1) shown in-app
+Drag to reschedule personal tasks
+ICS export of deadlines
+Time-zone-aware display with a selector
+Auto-generated preparation tasks from each deadline
+Conflict warnings when multiple deadlines fall on the same day
+Module F: Documents & Readiness (51–60)
+Scholarship-specific document checklist
+Four document states: Available, Missing, Expiring Soon, Needs Attention
+Expiry-date tracking with alerts
+Document completeness ring
+Shared document library reused across applications
+Filename and metadata validation for uploads
+Local-only upload preview (metadata only, nothing sent anywhere)
+Duplicate-requirement detection across scholarships
+Per-document preparation guide (demo content)
+Privacy controls: lock screen and “clear all local data” button
+Module G: Assistant & Guidance (61–70)
+Local intent-matching assistant over demo data
+Suggested prompts that change by page
+Eligibility explanation answers with cited demo records
+Application preparation checklist generator
+Quick-answer cards with links to source records
+Persistent chat history
+Context awareness (answers reflect the current page)
+Statement-of-purpose outline template (no AI-generated content)
+Scholarship glossary with tooltips
+“Questions to ask the provider” prompts
+Module H: Comparison & Decision (71–80)
+Side-by-side comparison of up to three scholarships
+Difference highlighting
+Weighted decision matrix where the student sets priorities
+Auto-generated pros and cons from rule results
+Shortlist export
+“Add to compare” button on every card
+Required-documents comparison
+Deadline timeline comparison
+Best-value highlight
+Shareable comparison link encoded in the URL (no server needed)
+Module I: Onboarding, Profile & Personalization (81–90)
+Multi-step onboarding wizard
+Profile completeness meter
+Save-and-resume onboarding
+Inline validation with helpful messages
+Avatar generated from initials
+Date, currency, and unit format preferences
+Accessibility settings: reduced motion, font scale, high contrast
+Theme switcher that follows the system preference
+Achievement badges (e.g., “First Application Submitted”)
+Weekly streak tracker
+Module J: Notifications & Insights (91–100)
+Notification center with read and unread states
+Filter notifications by type
+Toast system with undo actions
+Snooze notifications
+Application completion analytics charts
+Weekly activity heatmap
+Readiness score over time
+“Your next step” insight summary
+JSON backup export and import
+Demo mode: seed sample data and reset with one click
+4. Module Prompts (Use One at a Time)
+
+Give your coding platform one module prompt per phase. Include the master prompt context first.
+
+Module A (Discovery):
+
+Implement features 1–10 (Discovery & Search). Add a command palette (⌘K)
+with fuzzy search over pages, scholarships, and actions. Sync filters to the
+URL. Add facet counts, filter chips, and a designed empty state. Keep all
+existing explorer behavior working.
+
+Module B (Match DNA):
+
+Implement features 11–20. Build a radial Match DNA score with category bars
+and a what-if simulator that recalculates live. Use only the existing
+deterministic rule engine. Show mandatory failures as ineligible regardless
+of score. Label every score as an estimate.
+
+Module C (Funding):
+
+Implement features 21–30. Build a funding calculator with mutually exclusive
+award groups so amounts are not double-counted. Label all amounts as
+estimated. Add a diversity rule to recommendations and a dismiss-with-undo flow.
+
+Module D (Tracker):
+
+Implement features 31–40. Build a drag-and-drop Kanban board with a keyboard
+alternative. Store status history per application in LocalStorage. Add a
+next-action engine, notes, bulk actions, and an outcome funnel chart.
+
+Module E (Calendar):
+
+Implement features 41–50. Build month, week, and agenda calendar views.
+Calculate priority from days remaining and preparation progress. Add ICS
+export and a reminder schedule. Auto-generate preparation tasks per deadline.
+
+Module F (Documents):
+
+Implement features 51–60. Store document status, expiry dates, and checklist
+progress only. Never store file contents. Show expiry alerts and a
+completeness ring. Add a shared library and duplicate-requirement detection.
+Include a "clear all local data" control.
+
+Module G (Assistant):
+
+Implement features 61–70. Build a local intent-matching assistant over demo
+data. Show a visible label: "Local demo assistant – not a connected AI
+service." Persist chat history. Generate checklists from the selected
+scholarship's requirements.
+
+Module H (Comparison):
+
+Implement features 71–80. Build a comparison studio for up to three
+scholarships with highlighted differences, a weighted decision matrix, and
+a shareable URL encoding the comparison state.
+
+Module I (Onboarding):
+
+Implement features 81–90. Build a multi-step onboarding wizard with
+validation, save-and-resume, and a profile completeness meter. Add
+accessibility preferences (reduced motion, font scale, high contrast) and
+achievement badges.
+
+Module J (Insights):
+
+Implement features 91–100. Build a notification center with read/unread
+states and snooze. Add Recharts analytics: completion trends, a weekly
+activity heatmap, and a readiness-over-time chart. Add JSON backup
+export/import with validation.
+5. What to Build in Six Hours
+
+Prioritize these in order. Stop after any step when the time runs out. A polished, working core beats a half-built 100.
+
+Core polish and high-tech theme (Section 1 tokens, glass panels, bento dashboard)
+Match DNA ring and explainable breakdown (features 11, 12, 15, and the disclaimer)
+Kanban tracker (features 31, 35)
+Command palette and faceted explorer (features 1, 4, 6)
+Calendar priority and reminders (features 43, 45, 47)
+Document states and expiry (features 52, 53, 60)
+Comparison studio (features 71, 73, 80)
+Notifications, insights, and backup (features 91, 95, 99, 100)
+
+For the submission, prepare a 60-second demo flow: dashboard → Match DNA → what-if change → Kanban move → comparison → calendar. Judges will see clear problem alignment and working interactions in that sequence.
+
+give all the prompt  give that the ui prompt i want to encjane  the ui
+
+GRANTLY: All Prompts in One Place
+
+Paste these into your AI coding platform in order. Finish and verify each phase before starting the next.
+
+Phase 0: Project Setup (Run in Terminal)
+bash
+npm create vite@latest grantly -- --template react
+cd grantly
+npm install
+npm install react-router-dom lucide-react framer-motion recharts
+npm install -D tailwindcss @tailwindcss/vite
+npm run dev
+Phase 1: Foundation Prompt
+We are starting the GRANTLY hackathon project.
+
+First, inspect the complete existing workspace and identify:
+- Existing framework and dependencies
+- Existing source files
+- Current application structure
+- Missing dependencies
+- Existing errors
+
+Do not overwrite useful existing work.
+
+TECHNOLOGY: React + Vite, JavaScript, Tailwind CSS, React Router,
+Lucide React, Framer Motion, Recharts.
+
+DESIGN: Premium hybrid education-fintech dashboard.
+- Navy #111827, dark sidebar #151B2E, violet #8B5CF6, teal #14B8A6
+- Background #F8FAFC, card #FFFFFF, text #1E293B
+- Inter typography
+
+IMPLEMENT:
+- Reusable app layout with a responsive desktop sidebar and mobile navigation
+- Reusable header, notification component, buttons, cards, badges, inputs
+- All routes: /, /dashboard, /scholarships, /scholarships/:id, /eligibility,
+  /applications, /calendar, /documents, /assistant, /profile
+- Light and dark theme support
+- A professional 404 page
+- Folder structure: src/components/ui, layout, dashboard, scholarships,
+  applications; src/pages, data, context, hooks, utils, assets
+
+RULES: Implement actual files, not a plan. Keep components reusable.
+No broken routes. Start the dev server and verify navigation.
+Phase 2: Scholarship Data and Persistence
+Implement the scholarship data and persistence layer.
+
+CREATE:
+- src/data/scholarships.js
+- src/context/ScholarshipContext.jsx
+- src/utils/storage.js
+- src/utils/eligibility.js
+- src/data/demoStudent.js
+
+SCHOLARSHIP DATA: At least 12 realistic, clearly labelled demo records.
+Each record must include: id, title, provider, description, awardAmount,
+educationLevels, eligibleCourses, states, minimumPercentage,
+maximumFamilyIncome, categories, requiredDocuments, deadline,
+applicationUrl, sourceType, isDemo.
+Use fictional providers and example URLs. Never invent real government links.
+
+LOCALSTORAGE: Save and unsave scholarships, store the student profile,
+create applications, update statuses, store document checklist progress
+and reminders. Persist everything.
+
+ELIGIBILITY ENGINE: Deterministic and rule-based. Evaluate education level,
+course, state, academic percentage, and family income. Return match
+percentage, matched criteria, unmatched criteria, missing profile fields,
+and a plain-language explanation. A scholarship must not show as eligible
+if a mandatory requirement fails. Scores are never official eligibility.
+Handle missing or invalid data without crashing.
+
+TEST: Reload preserves data. Save and unsave work. Profile changes update
+eligibility. Invalid input does not crash the app.
+Phase 3: Dashboard and Explorer
+Implement the Student Dashboard and Scholarship Explorer.
+
+DASHBOARD:
+- Personalized greeting and student name
+- Stat cards: eligible count, saved count, active applications, upcoming deadlines
+- Application progress chart (Recharts)
+- Upcoming deadlines, recommended scholarships, recent activity
+- All statistics must come from real app state and scholarship data
+
+EXPLORER:
+- Search bar, category filters, education-level filters, state filters,
+  award amount filters
+- Deadline sorting, grid/list toggle, saved-only toggle, clear filters
+- Scholarship cards showing name, provider, amount, education level,
+  deadline, eligibility summary, save button, view details button
+- Empty search state
+
+DETAILS PAGE (/scholarships/:id):
+- Description, award info, eligibility requirements, required documents,
+  application steps, deadline, source information, save button, apply button
+- Clearly mark demo records. No fake official links.
+
+Test every route and filter before continuing.
+Phase 4: Signature Features
+Implement these modules using the shared LocalStorage-backed state.
+
+SMART ELIGIBILITY MATCHER (/eligibility)
+- Profile form: education, course, institution, state, academic percentage,
+  annual family income
+- Results: match percentage, eligibility breakdown, missing criteria,
+  explanation
+
+APPLICATION TRACKER (/applications)
+- Columns: Saved, Applying, Submitted, Under Review, Awarded, Rejected
+- Add application, change status, view details, delete entry
+
+DEADLINE CALENDAR (/calendar)
+- Interactive calendar with scholarship deadlines and application tasks
+
+DOCUMENT MANAGER (/documents)
+- Checklist: academic certificates, income certificate, identity documents,
+  bank details, institution details, other
+- Mark as ready, persist state
+
+SCHOLARSHIP ASSISTANT (/assistant)
+- Predefined question suggestions
+- Answers from local demo records only
+- Do not claim a live AI model is connected
+
+Test every module after building it.
+Phase 5: UI/UX Enhancement (High-Tech Command Center)
+Act as a world-class product designer and senior frontend engineer.
+Enhance the existing GRANTLY UI into a premium, high-tech "Command Center"
+experience. Preserve all existing routes, components, data structures,
+and LocalStorage keys. Do not rebuild the app from scratch.
+
+VISUAL IDENTITY
+- Dark-first interface with a full light theme toggle
+- Glassmorphism panels: translucent background, backdrop-filter blur(12px),
+  1px inner border rgba(255,255,255,0.06), radius 14–18px
+- Subtle dot-grid texture on the canvas, kept very faint
+- HUD-style corner-bracket marks on the hero score card only
+- Conic-gradient rings for match scores
+- One glow accent per screen maximum. No neon text.
+
+COLOR TOKENS (define in tailwind.config)
+Dark: canvas #070A12, sidebar #11182B, panel rgba(21,31,51,0.6),
+border #27334A, text #F1F5F9, muted #94A3B8
+Light: canvas #F5F7FB, panel #FFFFFF, border #E6E9F2, text #172033
+Accents: violet #8B5CF6 (dark #A78BFA), teal #2DD4BF (light #14B8A6)
+Status: success #22C55E, warning #F59E0B, danger #EF4444
+
+TYPOGRAPHY
+- Inter for UI text
+- JetBrains Mono (or IBM Plex Mono) with tabular numerals for all numbers,
+  dates, scores, and countdowns
+- Strong page titles, clear section headings, comfortable body text
+
+LAYOUT
+- Bento-grid dashboard with mixed card sizes
+- Collapsible desktop sidebar with tooltips when collapsed
+- Mobile drawer for navigation, bottom nav for small screens
+- Top bar: breadcrumbs, global search, ⌘K hint, notification bell with
+  unread badge, theme toggle, profile dropdown
+
+MOTION (Framer Motion)
+- Staggered card entrance (40ms steps)
+- Count-up numbers on stat cards
+- Spring-animated progress and score rings
+- Page transitions: fade and 8px slide, 200ms
+- Hover lift on cards: 2px, 150ms
+- Respect prefers-reduced-motion and provide a manual motion toggle
+
+COMPONENTS TO BUILD (reusable)
+Sidebar, Topbar, StatCard, ScholarshipCard, StatusBadge, ProgressRing,
+ProgressBar, SearchBar, FilterPanel, Modal, Dropdown, EmptyState,
+NotificationPanel, ThemeToggle, Toast, Skeleton, CommandPalette
+
+ACCESSIBILITY
+- WCAG AA contrast in both themes
+- Visible focus rings
+- Full keyboard navigation, including the command palette (↑ ↓ Enter Esc)
+- Semantic landmarks and ARIA labels on icon-only buttons
+
+RESPONSIVE
+- 375px: single column, touch targets at least 44px, no horizontal overflow
+- 768px: collapsible sidebar, two-column grids
+- 1280px+: full sidebar, multi-column bento layout
+
+DATA ETHICS (visible in the UI)
+- Label all scholarships as demo records
+- Scores are labelled as estimates, not eligibility decisions
+- Assistant is labelled "Local demo assistant – not a connected AI service"
+- Never imply documents are uploaded to a server (LocalStorage only)
+
+QUALITY GATE
+- npm run build passes with zero errors
+- No console errors
+- Every button, link, filter, and toggle does something real
+- Check light and dark themes at all four breakpoints
+- Reload and confirm theme and data persist
+- Report what you completed and what remains, honestly
+Phase 6: Feature Module Prompts (Pick One at a Time)
+
+Include the master context first: “Preserve existing features. Use the shared LocalStorage state.”
+
+Module A: Discovery & Search (features 1–10)
+
+Implement features 1–10. Add a ⌘K command palette with fuzzy search over
+pages, scholarships, and actions. Add typo-tolerant search, saved searches,
+facet counts per filter option, removable filter chips, URL-synced filters,
+a recently viewed rail, similar-scholarship suggestions, and keyboard
+autocomplete.
+
+Module B: Match DNA (features 11–20)
+
+Implement features 11–20. Build a radial Match DNA score with a radar chart
+of dimensions, per-criterion explanation cards, and a what-if simulator
+where changing GPA or income recalculates live. Rank missing-info prompts by
+score impact. Show mandatory failures as ineligible regardless of score.
+Add a transparent rules viewer and a printable match report. Label every
+score as an estimate.
+
+Module C: Recommendations & Funding (features 21–30)
+
+Implement features 21–30. Build a "For You" feed ranked by fit and deadline
+urgency, with a provider diversity rule. Add a weekly digest card, a category
+heatmap, and a funding calculator that treats mutually exclusive awards as
+one group so amounts are not double-counted. Label all amounts as estimated.
+Add thumbs up/down feedback that tunes local ranking, and dismiss with undo.
+
+Module D: Application Tracker (features 31–40)
+
+Implement features 31–40. Build a drag-and-drop Kanban board with a keyboard
+alternative. Store status history per application. Add completion percentage,
+a next-action engine, private notes, cloning, bulk actions, an archive view,
+and an outcome funnel chart.
+
+Module E: Calendar & Deadlines (features 41–50)
+
+Implement features 41–50. Build month, week, and agenda views. Calculate
+priority from days remaining and preparation progress: Critical, Attention,
+On Track, Completed, Overdue. Show countdown badges and a reminder schedule
+(T-30, T-7, T-1). Add ICS export, auto-generated preparation tasks per
+deadline, and same-day conflict warnings.
+
+Module F: Documents & Readiness (features 51–60)
+
+Implement features 51–60. Store only status, expiry dates, and checklist
+progress. Never store file contents. Support four states: Available, Missing,
+Expiring Soon, Needs Attention. Add a completeness ring, expiry alerts,
+a shared document library across applications, duplicate-requirement detection,
+and a "clear all local data" control with confirmation.
+
+Module G: Assistant (features 61–70)
+
+Implement features 61–70. Build a local intent-matching assistant over demo
+data with a visible label: "Local demo assistant – not a connected AI
+service." Add page-aware suggested prompts, answers that cite the demo
+record they came from, checklist generation, persistent chat history, a
+glossary with tooltips, and "questions to ask the provider" prompts. Do not
+generate personal statements with AI.
+
+Module H: Comparison (features 71–80)
+
+Implement features 71–80. Build a comparison studio for up to three
+scholarships. Highlight differences, add a weighted decision matrix where
+the student sets priorities, auto-generate pros and cons from rule results,
+and compare documents and deadlines. Encode the comparison in the URL so it
+can be shared without a server.
+
+Module I: Onboarding & Personalization (features 81–90)
+
+Implement features 81–90. Build a multi-step onboarding wizard with inline
+validation, save-and-resume, and a profile completeness meter. Add avatar
+initials, format preferences, accessibility settings (reduced motion, font
+scale, high contrast), system theme detection, achievement badges, and a
+weekly streak tracker.
+
+Module J: Notifications & Insights (features 91–100)
+
+Implement features 91–100. Build a notification center with read and unread
+states, type filters, and snooze. Add toasts with undo. Use Recharts for
+completion trends, a weekly activity heatmap, and a readiness-over-time
+chart. Add a "your next step" summary, JSON backup export and import with
+validation, and a demo mode with seed data and one-click reset.
+Phase 7: QA and Submission Prompt
+Act as a senior QA engineer and UI reviewer. Audit all of GRANTLY.
+
+ROUTES: Visit every route. Confirm no 404s and no blank screens.
+FUNCTIONAL: Test search, every filter combination, bookmarks, eligibility
+calculations, status updates, calendar interactions, document checklist,
+notifications, theme switching, and keyboard navigation.
+PERSISTENCE: Reload after every change type and confirm the state holds.
+RESPONSIVE: Check 375px, 768px, 1280px, and 1440px. Fix any horizontal overflow.
+TECHNICAL: Run npm run build. Fix errors, console warnings, and broken imports.
+DATA ETHICS: Confirm all demo data is labelled, no fake official links exist,
+scores are labelled as estimates, and nothing claims to be live.
+
+Remove placeholder text and unused components. Do not remove working features.
+Finish with a short report: what passed, what you fixed, and what remains.
